@@ -1,8 +1,4 @@
-using iCoin.Models;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
 
 namespace Models 
 {
@@ -18,6 +14,5 @@ namespace Models
         public string? Password { get; set;}
 
         public string? SubscribedCoins { get; set; }
-
     }
 }

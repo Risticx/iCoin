@@ -1,4 +1,3 @@
-
 using iCoin.Data;
 using Microsoft.EntityFrameworkCore;
 using Models;

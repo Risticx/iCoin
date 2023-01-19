@@ -1,5 +1,4 @@
-﻿
-using iCoin.Models;
+﻿using iCoin.Models;
 using Microsoft.AspNetCore.SignalR;
 using Models;
 using Newtonsoft.Json;
@@ -8,8 +7,6 @@ using StackExchange.Redis;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
-using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace iCoin.Data
 {
@@ -22,17 +19,15 @@ namespace iCoin.Data
         Task CreateCoin();
         IEnumerable<Coin?>? GetAllCoins();
         IEnumerable<Coin?>? GetSpecificCoins(string[] SubscribedCoins);
-
     }
 
     public class RedisCoinRepo : ICoinRepo
     {
         private static bool subscribed = false;
-
         private readonly IHubContext<CoinHub> _hubContext;
-    
         private IConnectionMultiplexer _redis;
         public DataContext Context { get; set; }
+
         public RedisCoinRepo(IConnectionMultiplexer redis, DataContext context, IHubContext<CoinHub> hubContext)
         {
             _redis = redis;
@@ -73,7 +68,6 @@ namespace iCoin.Data
                     {
                         db.HashSet("coin:" + symbol, new HashEntry[] { new HashEntry("image", $"{image}") });
                         db.HashSet("coin:" + symbol, new HashEntry[] { new HashEntry("name", $"{name}"), new HashEntry("symbol", $"{symbol}"), new HashEntry("price", $"{price}") });
-
                     }
                 }
             }
@@ -132,7 +126,6 @@ namespace iCoin.Data
             foreach (var key in keys)
             {
                 var ll = db.ListRange(key, 0, 288);
-
                 foreach (var l in ll)
                 {
                     CoinHistorySql sqlCoin = new CoinHistorySql();

@@ -1,7 +1,4 @@
-﻿using iCoin.Data;
-using StackExchange.Redis;
-using System.Text;
-
+﻿using System.Text;
 public class BackgroundService : IHostedService
 {
     private readonly ILogger _logger;
@@ -71,8 +68,4 @@ public class BackgroundService : IHostedService
             first = false;
         }
     }
-
 }
-
-
-

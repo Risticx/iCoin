@@ -1,8 +1,4 @@
-﻿using iCoin.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Models
 {
@@ -18,6 +14,5 @@ namespace Models
         public DateTime DateAndTime{ get; set; }
 
         public decimal Price { get; set; }
-
     }
 }

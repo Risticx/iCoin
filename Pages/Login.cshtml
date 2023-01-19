@@ -11,52 +11,44 @@
 @section Sredina {
     @if (!User.Identity.IsAuthenticated)
     {
-                <script>
-                    //let navtopic = document.getElementById("navtopic");
-                    //navtopic.classList.add("d-none");
-                </script>
+        <div class="container margins-auto">
+            <div class="row">
+                <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                    <div class="card border-0 shadow rounded-3 my-5">
+                        <div class="card-body p-4 p-sm-5">
 
-                <div class="container margins-auto">
-                    <div class="row">
-                        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-                            <div class="card border-0 shadow rounded-3 my-5">
-                                <div class="card-body p-4 p-sm-5">
+                            <h5 class="card-title text-center mbb-6 fw-light fs-5 text-uppercase fw-bold">Prijava</h5> 
+                            <div class="alert alert-danger bg-danger text-white font-weight-bold d-none" id="error"></div>
+                            <div class="alert alert-success p-3 mb-2 bg-success text-white d-none"  id="success"></div>
 
-                                    <h5 class="card-title text-center mbb-6 fw-light fs-5 text-uppercase fw-bold">Prijava</h5> 
-                                    <div class="alert alert-danger bg-danger text-white font-weight-bold d-none" id="error"></div>
-                                    <div class="alert alert-success p-3 mb-2 bg-success text-white d-none"  id="success"></div>
-
-                            @if (!string.IsNullOrWhiteSpace(error))
-                            {
-                                            <div class="alert alert-danger bg-danger text-white font-weight-bold">Pogresan username ili password</div>
-                            }
-
+                                @if (!string.IsNullOrWhiteSpace(error))
+                                {
+                                    <div class="alert alert-danger bg-danger text-white font-weight-bold">Pogresan username ili password</div>
+                                }
                                    
-                                        <div class="form-floating mb-3">
-                                            <input id="user" name="username" class="form-control" placeholder=" ">
-                                            <label for="floatingInput">Username</label>
-                                        </div>
-
-                                        <div class="form-floating mb-3">
-                                            <input id="pass" name="password" type="password" class="form-control" placeholder=" ">
-                                            <label for="floatingPassword">Password</label>
-                                        </div>
-
-                                        <div class="d-grid">
-                                            <button id="login" class="btn btn-primary1 btn-login text-uppercase fw-bold" type="submit">Prijavi se</button>
-                                        </div>
-
-                                        <hr class="my-4">
-                                        <div class="d-grid mb-2">
-                                            <a class="drugo text-uppercase fw-bold" href="Register">Nemaš nalog? Registruj se!</a>
-                                        </div>
-                                   
-
+                                <div class="form-floating mb-3">
+                                    <input id="user" name="username" class="form-control" placeholder=" ">
+                                    <label for="floatingInput">Username</label>
                                 </div>
-                            </div>
+
+                                <div class="form-floating mb-3">
+                                    <input id="pass" name="password" type="password" class="form-control" placeholder=" ">
+                                    <label for="floatingPassword">Password</label>
+                                </div>
+
+                                <div class="d-grid">
+                                    <button id="login" class="btn btn-primary1 btn-login text-uppercase fw-bold" type="submit">Prijavi se</button>
+                                </div>
+
+                                <hr class="my-4">
+                                <div class="d-grid mb-2">
+                                    <a class="drugo text-uppercase fw-bold" href="Register">Nemaš nalog? Registruj se!</a>
+                                </div>
+
                         </div>
                     </div>
+                </div>
+            </div>
         </div>
     }
-
 }

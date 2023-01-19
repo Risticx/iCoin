@@ -12,7 +12,7 @@
 }
 
 @section Sredina {
-            <table class="text-uppercase table table-dark table-hover" id="tabindex" style="margin-top: 100px; max-width:1230px;margin-left: auto; margin-right:auto;">
+        <table class="text-uppercase table table-dark table-hover" id="tabindex" style="margin-top: 100px; max-width:1230px;margin-left: auto; margin-right:auto;">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -29,20 +29,18 @@
             </tbody>
         </table>
 
-    <section class="py-5">
-        <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" id="vozila">                
+        <section class="py-5">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" id="vozila">                
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+
     @if (User.Identity.IsAuthenticated)
     {
                 <script>
                     let navbar = document.getElementById("navbar");
-
-                    navbar.innerHTML += `   
-                                            <li class="nav-item"><a class="nav-link" href="/User" type="button" id="dodajIskustva">Moj profil</a></li>
-                                            
+                    navbar.innerHTML += `   <li class="nav-item"><a class="nav-link" href="/User" type="button" id="dodajIskustva">Moj profil</a></li>
                                             <form action="/Home/Logout" method="POST">
                                                 <button id="logoutnav" class="logoutnav" type="submit">Odjavi se</button>
                                             </form>     `

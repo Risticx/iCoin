@@ -1,5 +1,4 @@
 ﻿using iCoin.Data;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Services;
 
@@ -11,7 +10,7 @@ namespace iCoin_App.Controllers
     {
         private readonly ICoinRepo _repo;
         private readonly IUsersService usersService;
-
+        
         public UserController(ICoinRepo repo, IUsersService users)
         {
             _repo = repo;
@@ -63,6 +62,7 @@ namespace iCoin_App.Controllers
                     var username = User.Identity.Name;
                     return Ok(usersService.GetSubscribedCoins(username));
                 }
+
                 return BadRequest("Error");
             }
         }
@@ -72,6 +72,7 @@ namespace iCoin_App.Controllers
         public ActionResult getSpecificCoins()
         {
             var specificCoins = usersService.GetSubscribedCoins(User?.Identity?.Name);
+
             return Ok(_repo.GetSpecificCoins(specificCoins));
         }
 
@@ -80,8 +81,8 @@ namespace iCoin_App.Controllers
         public ActionResult getNotification(string coins)
         {
             _repo.getNotification(coins);
+            
             return Ok("ok");
         }
-
     }
 }

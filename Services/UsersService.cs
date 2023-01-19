@@ -1,22 +1,15 @@
-using System;
-using System.Linq;
 using Models;
 using System.Web.Helpers;
-using Microsoft.AspNetCore.Authorization;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Services 
 {
     public interface IUsersService 
     {
-
         bool isUserAlreadyRegistered(string username);
         bool authUser(string username, string password);
         bool addUser(string username, string password);
         void SubscribeCoin(string coinChannel, string username);
         string[] GetSubscribedCoins(string? username);
-
     }
 
     public class UsersService : IUsersService 
@@ -27,14 +20,15 @@ namespace Services
             Context = context;
         }
 
-
         public bool isUserAlreadyRegistered(string username) 
         {
             var user = Context.Users.Where(p => p.Username == username).FirstOrDefault();
 
-            if(user == null) {
+            if(user == null)
+            {
                 return false;
             }
+
             return true;
         }
        
@@ -42,13 +36,16 @@ namespace Services
         {
             var user = Context.Users.Where(p => p.Username == username).FirstOrDefault();
 
-            if(user != null) {
+            if(user != null) 
+            {
                 if(Crypto.VerifyHashedPassword(user.Password, password) == false) 
                 {
                     return false;
                 }
+
                 return true;
             }
+
             return false;
         }
 
@@ -98,6 +95,7 @@ namespace Services
                     return coins.Split(";");
                 }
             }
+
             return new string[] { };
         }
     }

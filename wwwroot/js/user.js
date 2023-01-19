@@ -1,20 +1,24 @@
-﻿async function getCoins() {
+﻿getCoins()
+async function getCoins()
+{
     let coins = ""
     let obj;
+
     const res = await fetch('https://localhost:7046/User/getSubscribedCoins') 
     obj = await res.json();
+
     for (let i = 0; i < obj.length; i++) {
         coins += obj[i] + ";"
     }
+
     getNotify(coins)
 }
-getCoins()
+
 async function getNotify(coins) {
     await fetch("https://localhost:7046/User/getNotification/" + coins)
 }
 
 let coinRow = document.getElementById("coinRow");
-console.log("a");
 fetch("https://localhost:7046/User/getSpecificCoins")
     .then(p => {
         p.json().then(data => {
@@ -25,13 +29,13 @@ fetch("https://localhost:7046/User/getSpecificCoins")
     })
 
 getNewPrices()
-function getNewPrices() {
-
-
+function getNewPrices()
+{
     fetch("https://localhost:7046/User/getSpecificCoins")
         .then(p => {
             p.json().then(data => {
-                for (let i = 0; i < data.length; i++) {
+                for (let i = 0; i < data.length; i++)
+                {
                     let price = document.getElementById("price" + data[i].symbol);
                     price.innerHTML = data[i].price;
 
@@ -48,6 +52,7 @@ function getNewPrices() {
                                     yV.push(temp[1].replace("price:", ""));
                                     
                                 }
+
                                 createChart("myChart" + data[i].symbol, xV, yV);
                             })
                         });
@@ -77,7 +82,7 @@ function getNewPrices() {
             })
         });
     setTimeout(getNewPrices, 30000)
-} 
+}
 
 const connection = new signalR.HubConnectionBuilder()
     .withUrl("/coinHub")
@@ -106,10 +111,9 @@ let notify = document.getElementById("notification");
 function makenotify(message, count) {
     notify.innerHTML += makeNotification(count, message);
 }
+
 let m = ""
 connection.on("ReceiveMessage", (message) => {
-
-
     makenotify(message, counter1)
     counter1++;
 });
@@ -151,5 +155,3 @@ function makeNotification(counter1, message) {
 
     return result;
 }
-
-

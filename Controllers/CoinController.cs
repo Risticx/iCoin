@@ -44,6 +44,5 @@ namespace iCoin.Controllers
         {
             return Ok(_repo.dumpHistories());
         }
-
     }
 }
